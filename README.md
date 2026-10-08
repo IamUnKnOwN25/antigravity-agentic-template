@@ -114,26 +114,80 @@ Break large features into separate conversational phases:
 
 ---
 
-## Quickstart
+## 🚀 Adding to an Existing Project
 
-### 1. Initialize in Your Workspace
-Clone or copy this directory into your project root:
+You don't need to start from scratch. You can safely adopt this structure into any existing repository without overwriting your code.
+
+### Option A: Automated 1-Line Setup (Recommended)
+Navigate to your existing project root in your terminal and run:
+
+**macOS / Linux:**
 ```bash
-git clone <your-repo-url> my-project
-cd my-project
+curl -fsSL https://raw.githubusercontent.com/IamUnKnOwN25/antigravity-agentic-template/main/scripts/adopt.py | python3 -
 ```
 
-### 2. Verify Template Integrity
-Run the built-in health check script:
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/IamUnKnOwN25/antigravity-agentic-template/main/scripts/adopt.py | python -
+```
+
+**What the adopter script does automatically:**
+1. **Detects your stack** (Node.js/TypeScript, Python, Go, Rust, Next.js, test runner, package manager).
+2. **Generates a custom `GEMINI.md`** pre-filled with your stack rules (or preserves your existing one).
+3. **Copies `.agents/` and `.gemini/`** directories without touching your existing source code.
+
+---
+
+### Option B: Manual Step-by-Step Setup
+
+If you prefer to configure it manually:
+
+#### Step 1: Copy the Structure
+Copy the following files and folders into your existing project root:
+- `GEMINI.md`
+- `.agents/`
+- `.gemini/`
+- `scripts/health_check.py`
+
+#### Step 2: Tailor `GEMINI.md` (3 Minutes)
+Open `GEMINI.md` and fill in the placeholders with your project's exact stack:
+```markdown
+## 1. Tech Stack & Environment
+- Runtime: Node.js 20+ (TypeScript)
+- Package Manager: pnpm
+- Core Framework: Next.js 15
+- Test Runner: vitest
+```
+*Keep it under 80 lines! All long-form instructions belong in Skills, not Rules.*
+
+#### Step 3: Configure MCP (Optional)
+If your project connects to a local database (SQLite/PostgreSQL) or GitHub:
+- Edit `.gemini/mcp_config.json` with your database path or connection URL.
+- If you don't need external database/API connections, you can leave it empty or delete it.
+
+#### Step 4: Define Your First Custom Skill
+Look at `.agents/skills/sample-skill/SKILL.md`:
+- Rename it or create a new folder under `.agents/skills/<your-task>/SKILL.md`.
+- Write down the step-by-step Standard Operating Procedure (SOP) for your most repetitive or complex task (e.g., creating an API endpoint, adding a migration, or writing tests).
+
+#### Step 5: Test in Antigravity
+1. Open your existing project folder in **Antigravity**.
+2. Start a new conversation tab.
+3. Test your slash commands:
+   ```text
+   /task "Implement user profile edit feature"
+   /checkpoint
+   ```
+
+---
+
+## 🆕 Starting a New Project from Scratch
+
+If you are starting a brand-new project:
+
 ```bash
+git clone https://github.com/IamUnKnOwN25/antigravity-agentic-template.git my-new-project
+cd my-new-project
 python scripts/health_check.py
 ```
-
-### 3. Customize for Your Stack
-- Edit `GEMINI.md` to specify your preferred language, framework, and package manager.
-- Add your database or GitHub tokens to `.gemini/mcp_config.json` (if using MCP).
-- Open the project in **Antigravity**, start a new chat, and try:
-  ```text
-  /task "Build initial project setup"
-  /checkpoint
-  ```
+Edit `GEMINI.md` to define your tech stack, open in Antigravity, and begin building!
