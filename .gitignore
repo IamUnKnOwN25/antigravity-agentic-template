@@ -1,0 +1,32 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies & Environments
+node_modules/
+.pnpm-store/
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Build & Dist
+dist/
+build/
+.next/
+out/
+*.log
+
+# Antigravity Runtime & Logs
+.gemini/logs/
+*.tmp
